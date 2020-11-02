@@ -240,19 +240,163 @@ Assignment - 15 mins.
 Shiva# - 8106270903
 ============================================
 
+What is Container? Lets Proove it?
+
+		one copy of image(MNT)
+		- get mounted to USER NS
+		one net ns get attached to user
+		one pid ns get attached to user
+
+ 1  clear
+    2  ls
+    3  id
+    4  ps
+    5  ps -eaf | grep 19159
+    6  ps -eaf | grep 19157
+    7  ps -eaf | grep 19137
+    8  ps -eaf | grep 19136
+    9  clear
+   10  ps -eaf | grep 19133
+   11  ps -eaf | grep 1207
+   12  ps -eaf
+   13  clwe
+   14  pwd
+   15  cleatr
+   16  clear
+   17  cd
+   18  pwd
+   19  docker ps
+   20  docker ps -a
+   21  docker create jenkins
+   22  docker ps -a
+   23  clear
+   24  docker ps -a
+   25  docker start a253429a988b
+   26  docker ps -a
+   27  ps -eaf | grep a253429a988b
+   28  ps -eaf | grep 8901
+   29  clear
+   30  ls
+   31  cd /
+   32  pwd
+   33  ls
+   34  clear
+   35  docker ps
+   36  docker exec a253429a988b ls /
+   37  clear
+   38  df -kh
+   39  docker exec a253429a988b df -kh
+   40  clear
+   41  docker create jenkins
+   42  docker ps -a
+   43  docker start e46d2793e036
+   44  clear
+   45  docker ps
+   46  docker exec e46d2793e036 df -kh
+   47  docker exec a253429a988b df -kh
+   48  docker exec e46d2793e036 ls /tmp
+   49  docker exec e46d2793e036 touch /tmp/ramukaka.txt
+   50  docker exec e46d2793e036 ls /tmp
+   51  docker exec a253429a988b ls /tmp
+   52  clear
+   53  ls
+   54  docker ps
+   55  docker inspect e46d2793e036 | grep -i ip
+   56  docker inspect a253429a988b | grep -i ip
+   57  clear
+   58  ps -eaf
+   59  clear
+   60  docker ps
+   61  docker exec e46d2793e036 ps -eaf
+   62  docker exec a253429a988b ps -eaf
+   63  history
 
 
 
 
+Physcial Server			Virtual Server			Container   
+==================================================================================
+is running			is running			is running
+When				When				When	
+PID 1 is running		PID 1 is running		PID 1 is running
+
+
+PID 1 is SYSTEMD		PID 1 is SYSTEMD		PID 1 is ANYTHING
+								java
+								python
+								perl
+								ruby
+								a
+								b
+								c
+=============================================================================
+RUN
+-----------------------------------
+pull + create + start + ATTACHED TO Container OR (Become a container) or become PID1
+
+
+RUN -d
+-----------------------------------
+pull + create + start + DO NOT ATTACHED TO Container OR (DO NOT Become a container) or DO NOT become PID1
 
 
 
+  1  clear
+    2  ps
+    3  docker run jenkins
+    4  clear
+    5  docker ps -a
+    6  docker run -d jenkins
+    7  docker ps
+    8  clear
+    9  docker run ubuntu
+   10  docker ps
+   11  docker ps -a
+   12  clear
+   13  docker ps -a
+   14  /bin/bash
+   15  clear
+   16  history
+
+How to use container?
+==============================
+how to get inside a container?
+- exec
+	exec would execute an executable inside a container.
+	interact with system using - shell - 
+	docker exec -it 5f606dfcaa80 /bin/bash
+
+- attach
+	attached to PID 1
+
+  29  docker exec 5f606dfcaa80 ls
+   30  docker exec 5f606dfcaa80 ps
+   31  clear
+   32  docker exec 5f606dfcaa80 dfsadsad
+   33  docker exec 5f606dfcaa80 /bin/bash
+   34  docker exec -it 5f606dfcaa80 /bin/bash
+   35  clear
+   36  docker ps
+   37  docker attach 5f606dfcaa80
+   38  docker ps
+   39  clear
+   40  docker run -it ubtunu
+   41  docker run -it ubuntu
+   42  docker ps -a
+   43  cleat
+   44  clear
+   45  docker run -it ubuntu
+   46  docker ps
+   47  docker run -itd ubuntu
+   48  docker ps
+   49  history
+
+]
+
+How to access a container from outside?
 
 
-
-
-
-
-
+How to come out of the cointainer without exisitng?
+control +  p + q
 
 
