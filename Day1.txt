@@ -102,15 +102,156 @@ centos
 key -
 
 Other Container Runtime tools?
+----------------------------------------
+https://www.devopsschool.com/blog/list-of-top-container-runtime-interface-projects/
+
+Docker Components
+===========================================
+Docker Engine
+  12  which docker
+   13  ps -eaf | grep docker
+   14  which containerd
+
+
+OS image contains...
+	BOOT FileSystems	KERNAL
+	Root FileSystems	@ /
+	User FileSystems
+	App FileSystems
+https://www.vagrantbox.es/
+
+
+Docker Image
+	Collection of filesystems
+		Root FileSystems	ubuntu,fedora,deb,windows,rhel
+		User FileSystems	root | jenkins | administrator
+		App FileSystems		jdk -> jenkins'
+						Java based
+						8080 - WEB 
+						50000 - Agent
+						
+
+Docker Registery	
+		Repos
+			has image
+	Public
+		hub.docker.com
+		gr
+
+	Pvt
+		artifactory
+		nexus
+		ecr
+
+Docker Container
+	When you run image, 
+		one copy of image(MNT)
+		- get mounted to USER NS
+		one net ns get attached to user
+		one pid ns get attached to user
+		
+	Whatever you would have in image - you have in cont.
+	From one Image - you can create multiple Container.
+
 
 Docker Workflow
+=========================
+Human -> Docker Client --> Docker Server
+		CHECK - If docker image exist in local registry
+				ask containerd to allocate resources for container.
+		CHECK - If docker image do exist in local registry
+				- first download from docker hub registry to local
+				- ask containerd to allocate resources for container.
 
-Container Workflow
 
----------------------
-centos1 - DOCKER
-centos2
-windows
+Human?
+born -> kid -> teen -> young -> mid -> old -> die
+
+vms lifecycle.
+create -> start -> stop -> start -> restart -> pause -> unpause -> kill -> rm
+
+Container Lifecycle
+--------------------------------------------------------------------
+create -> start -> stop -> start -> restart -> pause -> unpause -> kill -> rm
+
+ 9  docker info
+   10  docker version
+   11  clear
+   12  which docker
+   13  ps -eaf | grep docker
+   14  which containerd
+   15  history
+   16  clear
+   17  docker images
+   18  docker pull jenkins
+   19  clear
+   20  docker images
+   21  docker ps
+   22  docker ps -a
+   23  docker  create jenkins
+   24  docker ps
+   25  docker ps -a
+   26  docker  create jenkins
+   27  docker ps -~a
+   28  clear
+   29  docker ps -a
+   30  docker start adfefee0af6d
+   31  docker ps -a
+   32  docker stop adfefee0af6d
+   33  docker ps -a
+   34  docker start adfefee0af6d
+   35  docker ps -a
+   36  clear
+   37  docker ps -a
+   38  docker restart adfefee0af6d
+   39  docker ps -a
+   40  clear
+   41  docker pause  adfefee0af6d
+   42  docker ps -a
+   43  docker unpause  adfefee0af6d
+   44  docker ps -a
+   45  clear
+   46  docker ps
+   47  docker ps -a
+   48  docker kill adfefee0af6d
+   49  docker ps -a
+   50  clear
+   51  docker ps -a
+   52  docker start 744e137d5f6c
+   53  docker ps -a
+   54  docker rm adfefee0af6d 744e137d5f6c
+   55  docker ps -a
+   56  docker stop 744e137d5f6c
+   57  docker rm 744e137d5f6c
+   58  docker ps -a
+   59  clear
+   60  history
+
+
+Assignment -
+===============================================
+Pause Vs Unpause
+stop Vs Kill
+
+
+Lab Time - 15 mins
+Assignment - 15 mins.
+
+Shiva# - 8106270903
+============================================
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
