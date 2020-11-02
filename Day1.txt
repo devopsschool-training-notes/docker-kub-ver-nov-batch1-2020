@@ -1,0 +1,117 @@
+docker-kub-ver-nov-batch1-2020
+
+1 234567890
+============================
+Rajesh Kumar
+======================================
+Demo - AWS
+Lab - L n D
+======================
+9:30 AM - 6:30 PM IST. 6:00 PM - Assignment 
+=============================
+2 BREAK - TEA, Coffee, Restroom - 20 MINS. 11.15 AM & 4:00 PM
+1 BREAK - 1 PM to 2 PM
+-----------------------------
+Pre Test - Docker and Kubernetes
+Post Test - Docker and Kubernetes
+=====================================
+Docker Essential Quiz - 1 - https://www.devopsschool.com/lms/mod/quiz/view.php?id=250
+Kubernetes Essential Quiz - 1 - https://www.devopsschool.com/lms/mod/quiz/view.php?id=319
+30 mins.
+===--------------------------
+======================================================================
+What is Docker?
+===================
+	Container mgmt tool.
+	Lightweight 
+	Free
+	Open Source
+	Written in Golang
+	by Soloman hykes
+	Release
+		CE - FOCUS
+		EE
+		https://www.devopsschool.com/blog/ 
+
+	Tool
+		Saving cost	- Cheaper
+		Saving time	- faster
+		Improving Quality - better
+		----------------------
+		To run APPS in Data center
+
+	What is Container?
+-----------------------------------------------------------
+	init of USER NS 
+			with 	ONE NET NS
+				ONE PID NS
+				ONE MNT
+	Container is INDEPENDENT runtime env for ANY APP.
+
+What are the components needed to RUN any APP aka Software?
+	
+Hardware
+	OS
+	-> KERNEL
+		-> Namespace
+				 	ALLOWEDinOS	Need	  Can get Created	
+			User NS		Multiple	1	 	Multiple
+			PID NS		ONE		1		Multiple			
+			MNT NS		ONE		1		Multiple	
+			NET NS		ONE		1		Multiple			
+		-> CGroup	
+		-> Capabilities	
+
+
+KERNEL
+The kernel is a computer program at the core of a computer's operating system with complete control over everything in the system. 
+
+CGroup
+cgroups (abbreviated from control groups) is a Linux kernel feature that limits, accounts for, and isolates the resource usage (CPU, memory, disk I/O, network, etc.) of a collection of processes.
+
+
+System FileSystems
+---------------
+Collection of files and dir for specfic purpose.
+
+BOOT FileSystems	KERNAL
+Root FileSystems	@ /
+User FileSystems
+App FileSystems
+==========================RUNNING APP====================================================
+1990s		INTERNET   2000s			2020
+----------------------------------------------------------------------------------------
+PC			   DATA Center			DATA Center????
+PHYSICAL SERVER		   Virtual Machine
+
+=============================================================
+What is Docker Arch? How Docker Works!!!!
+===================================================
+Human -> Docker Client ---REST---> Docker Server(Docker Deamon) -> Containerd -> Kernal
+         ---------------------------------------------
+				Docker Engine
+
+How to install Docker?
+-------------------------------------------------
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+
+https://www.devopsschool.com/blog/how-to-login-linux-server-of-aws-from-windows-using-putty/
+
+13.233.47.224
+centos
+key -
+
+Other Container Runtime tools?
+
+Docker Workflow
+
+Container Workflow
+
+---------------------
+centos1 - DOCKER
+centos2
+windows
+
+
+
+
