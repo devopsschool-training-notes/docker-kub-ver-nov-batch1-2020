@@ -197,7 +197,82 @@ docker events
   244  history
 
 
+========================
+How to  create images?
+===========================
+Manual Way - Existing Container
+======================
+UB
+----
+Git
+Java
+Apache
+-------
+docker commit -m"up-up-git-ap-java" -a"rajesh kumar" 392f2d56d526 up-up-git-ap-java
+docker commit -m"light" -a"rajesh kumar" 3e82eaa73c76 light
 
+How to share this image with anyone?
+=========================================
+1. Using Tarball
+ docker images
+  395  docker save -o light.tar light
+  396  ls
+  397  clear
+  398  ls
+  399  ls
+  400  docker ps -a
+  401  clear
+  402  docker images
+  403  docker rmi light
+  404  docker images
+  405  ls
+  406  docker load -i light.tar
+  407  docker images
+  408  docker run -it light
+  
+2. Using Public registry
+Step 1 - Register at hub.docker.com - Verify
+Step 2 - Create a repo at hub.
+Step 3 - COND - Make sure IMAGE name MUST match with reponame using "docker tag"
+Step 4 - docker login
+Step 5 - docker push imagename
+
+00  docker ps -a
+  401  clear
+  402  docker images
+  403  docker rmi light
+  404  docker images
+  405  ls
+  406  docker load -i light.tar
+  407  docker images
+  408  docker run -it light
+  409  clear
+  410  history
+  411  clear
+  412  docker images
+  413  docker tag light devopsschools/tuesdayver
+  414  docker images
+  415  docker login
+  416  docker push devopsschools/tuesdayver
+  417  clear
+  418  docker commit -m"light" -a"rajesh kumar" 3e82eaa73c76 light:v1
+  419  docker commit -m"light" -a"rajesh kumar" 3e82eaa73c76 devopsschools/tuesdayver:v1
+  420  docker push devopsschools/tuesdayver:v1
+
+
+
+
+3. Using Private registry - NA
+
+
+
+
+
+
+
+
+Automated Way - Using dockerfile
+=======================
 
 
 
