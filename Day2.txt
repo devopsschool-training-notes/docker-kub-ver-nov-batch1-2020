@@ -417,7 +417,39 @@ tmfs -- In Memory
 
 Automated Way - Using dockerfile
 =======================
+Jenkins 
+	openjdk:8-jdk
+		buildpack-deps:buster-scm
+			buildpack-deps:buster-curl
+			      debian:buster
+			      		scratch
+Rule of Dockerfile
+====================
+Each line of Dockerfile would create one LAYER
+Each layer would be created from the container of previous layer.
 
+Base - UBUNTU
+- Install git
+- Volume - /opt/ramu
+- ARG - VER_HOME=/opt/ramu
+- ENV - use VER_HOME
+- COPY SOME files from host machine t- /opt/ramu
+
+FROM ubuntu
+MAINTAINER Rajesh Kumar rajesh@devopsschool.com
+ARG apploc=/opt/ramu
+RUN apt-get update
+RUN apt-get install git -y
+ENV VER_HOME ${apploc}
+VOLUME /opt/ramu1
+COPY index.html ${apploc}/index.html
+
+https://github.com/jenkinsci/docker/blob/587b2856cd225bb152c4abeeaaa24934c75aa460/Dockerfile
+https://www.devopsschool.com/tutorial/docker/dockerfile/dockerfile-example-sample-lab.html
+
+docker build -t image1 .
+
+docker build -f filename -t image1 .
 
 
 
