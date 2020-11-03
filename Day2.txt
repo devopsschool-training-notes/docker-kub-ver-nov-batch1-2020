@@ -1,0 +1,111 @@
+13.233.158.211
+=====================
+How to access a container from outside?
+-----------------------------------------------------
+docker run -d jenkins
+
+docker run -d -p 8080:8080 jenkins
+		 node:cont
+
+docker run -d -p 0.0.0.0:8080:?:?:?:8080 jenkins
+
+
+82  docker ps -a
+  183  docker stop $(docker ps -aq)
+  184  docker rm $(docker ps -aq)
+  185  clear
+  186  docker ps -a
+  187  docker run -d jenkins
+  188  ls
+  189  docker ps
+  190  docker run -itd ubuntu
+  191  docker ps
+  192  clear
+  193  ls
+  194  docker ps
+  195  docker inspect a33f603f43f6 | grep -i ip
+  196  clear
+  197  ping 172.17.0.3
+  198  clear
+  199  docker ps
+  200  docker inspect 2a25653a6508 | grep -i ip
+  201  ping 172.17.0.2
+  202  curl http://172.17.0.2:8080
+  203  docker ps
+  204  clear
+  205  docker run -d -p 8080:8080 jenkins
+  206  docker ps
+  207  docker run -d -p 8090:8080 jenkins
+  208  docker run -d -p 8090:8080 jenkins
+  209  history
+====================================================
+https://www.devopsschool.com/tutorial/docker/commands/index.html
+
+cp
+
+ 214  touch devopsschool.txt
+  215  vi devopsschool.txt
+  216  more devopsschool.txt
+  217  docker ps
+  218  docker exec a33f603f43f6 ls/ opt
+  219  clear
+  220  docker exec a33f603f43f6 ls /opt
+  221  docker cp devopsschool.txt a33f603f43f6:/opt
+  222  docker exec a33f603f43f6 ls /opt
+  223  ls
+  224  rm -rf devopsschool.txt
+  225  ls
+  226  docker cp a33f603f43f6:/opt/devopsschool.txt .
+  227  ls
+  228  more devopsschool.txt
+
+diff
+---------------------
+	Anything you do in Container after getting created - you can see using diff comm.
+	- added
+	- delted
+	- change
+
+
+231  ls
+  232  docker ps
+  233  docker attach a33f603f43f6
+  234  docker ps
+  235  docker diff a33f603f43f6
+
+
+
+port
+
+[root@ip-172-31-14-200 centos]# docker port a18f7917f412
+8080/tcp -> 0.0.0.0:8090
+[root@ip-172-31-14-200 centos]# docker port 2a25653a6508
+[root@ip-172-31-14-200 centos]# docker port a33f603f43f6
+[root@ip-172-31-14-200 centos]#
+
+
+rename
+
+
+  242  clear
+  243  docker ps
+  244  docker rename a18f7917f412 dev1
+  245  docker rename 33f00104e9dc dev2
+  246  docker ps
+  247  clear
+  248  docker run -itd --name dev3 ubuntu
+  249  docker ps
+  250  docker help run
+  251  history
+
+
+
+Assignment 2
+=====================
+update	Update configuration of one or more containers
+wait	Block until one or more containers stop, then print their exit codes
+
+
+
+
+
