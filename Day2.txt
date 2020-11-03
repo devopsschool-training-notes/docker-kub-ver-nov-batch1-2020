@@ -99,11 +99,114 @@ rename
   251  history
 
 
-
 Assignment 2
 =====================
 update	Update configuration of one or more containers
 wait	Block until one or more containers stop, then print their exit codes
+==============================================================================
+
+logs	Fetch the logs of a container
+ps	List containers
+stats	Display a live stream of container(s) resource usage statistics
+top	Display the running processes of a container
+events	Get real time events from the server
+
+
+189  docker logs a33f603f43f6
+  190  docker ps
+  191  docker logs a18f7917f412
+  192  clear
+  193  docker stats
+  194  docker run -itd -m 200m ubuntu
+  195  docker ps
+  196  docker stats
+  197  docker ps
+  198  ps -eaf | grep docker
+  199  clear
+  200  docker ps
+  201  docker top 7951c0aa702e
+  202  clear
+  203  docker stop $(docker ps -aq)
+  204  docker stop $(docker ps -aq)
+  205  clear
+  206  docker ps -a
+  207  docker rm $(docker ps -aq)
+  208  docker ps -a
+  209  clear
+  210  history
+docker events
+
+
+187  docker ps -a
+  188  docker ps -a
+  189  docker ps
+  190  docker ps -a
+  191  docker images
+  192  history
+  193  clear
+  194  dcoker images
+  195  docker images
+  196  docker rmi ubuntu jenkins
+  197  clear
+  198  docker info
+  199  docker history
+  200  docker inspect imagename'
+  201  docker inspect imagename
+  202  docker history imagename
+  203  docker images
+  204  docker info
+  205  clear
+  206  cd /var/lib/docker
+  207  ls
+  208  cd overlay2
+  209  clear
+  210  ls
+  211  du -sh .
+  212  docker pull ubuntu
+  213  ls
+  214  docker inspect ubuntu
+  215  clear
+  216  docker history  ubuntu
+  217  ls
+  218  clear
+  219  ls
+  220  du -h --max-depth=1
+  221  cd ./dbe4bcbb6204841262a73e4ff9d1d693da1a3732a12f1c72aaa2fa339e5fdca9
+  222  ls
+  223  clear
+  224  cd diff/
+  225  ls
+  226  clear
+  227  cd
+  228  ls
+  229  c /var/lib/docker/
+  230  ls
+  231  cd /var/lib/docker/
+  232  clear
+  233  ls
+  234  cd overlay2/
+  235  ls
+  236  docker run -itd ubuntu
+  237  ls
+  238  df -kh
+  239  cd 67acbdffcc7056b78109d8f196f3332a5a8815ea39d4bc0acb85b63a4ba10bfa
+  240  clear
+  241  ls
+  242  cd merged/
+  243  ls
+  244  history
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
