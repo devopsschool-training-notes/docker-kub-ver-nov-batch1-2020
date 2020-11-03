@@ -265,6 +265,148 @@ Step 5 - docker push imagename
 3. Using Private registry - NA
 
 
+==========================================================
+Volume
+==========================================================
+How to make DATA persistent beyond a lifecycle of the container?
+----
+Answer - Volume
+https://www.devopsschool.com/blog/understand-docker-volume-from-beginner-to-deep-dive-level/
+
+Volume Types 
+---
+volume --- /var/lib/docker/volumes
+mntfs -- ANYWHERE in the HOST MACHINE
+tmfs -- In Memory
+
+359  clear
+  360  cd /var/lib/docker/
+  361  find . -name devopsschool.com
+  362  find . -name devopsschool.txt
+  363  docker images
+  364  clear
+  365  ls
+  366  find . -name devopsschool.txt
+  367  docker ps
+  368  docker stop 38b3e08e3a3e859a19dd81f1a07e50970478adb4be67f69707ed1858cb70f8/diff/opt/devopsschool.txt
+  369  clear
+  370  docker ps
+  371  ls
+  372  find . -name devopsschool.txt
+  373  docker stop 6f6daa4e7bdd
+  374  find . -name devopsschool.txt
+  375  docker rm 6f6daa4e7bdd
+  376  find . -name devopsschool.txt
+  377  pwd
+  378  ls
+  379  clear
+  380  ls
+  381  cd volumes/
+  382  pwd
+  383  ls
+  384  pwd
+  385  clear
+  386  ls
+  387  clear
+  388  docker volume
+  389  docker volme ls
+  390  docker volume ls
+  391  clear
+  392  s
+  393  ls
+  394  docker volume ls
+  395  ls
+  396  clear
+  397  s
+  398  ;s
+  399  ls
+  400  cd 7f36605bca2a3731b872c112792f068d8dc10aee7d6ec2cf86233b09ba084742
+  401  clear
+  402  ls
+  403  cd _data/
+  404  ls
+  405  cd ..
+  406  lsx
+  407  clear
+  408  ls
+  409  cd ..
+  410  ls
+  411  docker volume
+  412  clear
+  413  docker volume
+  414  docker volume prune
+  415* clea
+  416  ls
+  417  docker volume
+  418  docker volume create
+  419  ls
+  420  docker volume create dev1
+  421  ls
+  422  clear
+  423  ls
+  424  docker volume create dev2
+  425  docker volume ls
+  426  docker volume create dev3
+  427  ls
+  428  docker volume rm dev3
+  429  ls
+  430  clear
+  431  docker volume
+  432  docker volume inspect dev2
+  433  clear
+  434  ls
+  435  docker help run
+  436  cls
+  437  clear
+  438  docker ps -a
+  439  docker run -itd -v dev1:/opt/raju1 ubuntu
+  440  docker ps
+  441  docker exec c1fe57171360 df -kh
+  442  docker exec c1fe57171360 ls /
+  443  docker exec c1fe57171360 ls /opt
+  444  clear
+  445  ls
+  446  docker attach c1fe57171360
+  447  docker ps
+  448  docker stop c1fe57171360
+  449  docker rm c1fe57171360
+  450  clear
+  451  ls
+  452  cd dev1/
+  453  ls
+  454  cd _data/
+  455  s
+  456  clear
+  457  ls
+  458  docker run -itd -v dev1:/opt/raju1 ubuntu
+  459  docker ps
+  460  docker exec 42ae0edd9ed9 ls /opt/raju1
+  461  clear
+  462  ls
+  463  docker run -itd -v dev1:/opt/raju1 -v dev2:/opt/rrr ubuntu
+  464  docker ps
+  465  docker exec 68ea86d9c856 ls /
+  466  docker exec 68ea86d9c856 ls /opt
+  467  clear
+  468  docker exec 68ea86d9c856 ls /opt
+  469  docker exec 68ea86d9c856 ls /opt/raju1
+  470  docker exec 68ea86d9c856 ls /opt/rrr
+  471  cd ..c
+  472  clear
+  473  ls
+  474  cd ..
+  475  ls
+  476  cd .
+  477  cd ..
+  478  ls
+  479  clear
+  480  ls
+  481  docker ps
+  482  history
+
+
+
+
 
 
 
