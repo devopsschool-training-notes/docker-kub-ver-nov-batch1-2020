@@ -403,6 +403,8 @@ tmfs -- In Memory
   480  ls
   481  docker ps
   482  history
+  
+  docker run -itd -v /opt/bkp:/tmp/ramu ubuntu
 
 
 
