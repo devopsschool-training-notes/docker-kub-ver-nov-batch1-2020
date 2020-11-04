@@ -131,6 +131,168 @@ networks:
   723  docker-compose rm
 
 
+=======================================================================================================
+=======================================================================================================
+=======================================================================================================
+
+Master
+----------------------------
+- API Server		- POD - Container - Image -> Google Registry
+- Etcd			- POD - Container - Image -> Google Registry
+- Controller Manager	- POD - Container - Image -> Google Registry
+- Schedular		- POD - Container - Image -> Google Registry
+
+- Kubelet
+- Docker
+- Kube Proxy		- POD - Container - Image -> Google Registry
+	
+Worker
+----------------------------
+- Kubelet
+- Docker
+- Kube Proxy		- POD - Container - Image -> Google Registry
+
+
+Workstation
+----------------------------
+Kubectl
+
+
+================================
+How to setup a clustors?
+
+Single Node - minikube - ONE VM
+
+MultiNode
+===================
+Physcial Server OR VMs
+- Kubeadm
+
+Cloud
+	Own 
+		Kubeadm
+		KOPS
+	Hosted
+		EKS
+		AKS
+		GKE
+
+-----------------------------
+40+ to setup k8s clustors
+
+===============================================
+Centos 1 - Cleanup + K8s Worker
+Centos 2 - K8s Master
+================================================
+Master --> Workstation --> Worker
+========================= ==========
+	Centos2			Centos1		 	
+
+https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
+
+Master		DONE
+=====================
+Step 1 - Step 10
+
+
+Workstation 
+====================
+Step 11 & Step 12 & Step 13
+
+Worker
+===================
+ 
+# Follow Step 1 
+# Follow Step 2
+# Follow Step 3
+# Follow Step 4
+# Follow Step 5
+# Follow Step 6
+# Follow Step 7
+# Follow Step 8
+&&&&
+kubeadm join command....
+
+13.233.53.11
+===========================
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.13.255:6443 --token f6fwap.2gc6k2j44soywn98 \
+    --discovery-token-ca-cert-hash sha256:39bc2d19ad6c2660acda5050b524272d872bcf6c5526dc3fd3cb866fa6b19f85
+
+=======================================================
+Worker
+=============
+65.0.86.116
+
+How to clean up Existing docker in Centos1
+===================================================
+docker rm $(docker ps -aq)
+docker rm -f -v $(docker ps -q)
+iptables --flush
+systemctl stop docker
+echo "1" >/proc/sys/net/bridge/bridge-nf-call-iptables 
+# REBOOT
+
+
+# Follow Step 1 
+# Follow Step 2
+# Follow Step 3
+# Follow Step 4
+# Follow Step 5
+# Follow Step 6
+# Follow Step 7
+# Follow Step 8
+&&&&
+kubeadm join command....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
