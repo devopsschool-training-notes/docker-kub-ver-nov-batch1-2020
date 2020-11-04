@@ -1,0 +1,137 @@
+15.207.18.7
+==============================
+CMD Vs Entrypoint
+=============================
+RUN A Container.
+=============================
+How to set PID 1?
+-------------------------------
+CMD
+Entrypoint
+------------------------------
+CMD Vs Entrypoint
+
+CMD
+	CAN BE CHANGED duruing run time.
+Entrypoint
+	CAN NOT BE CHANGED duruing run time.
+
+Questions
+============================
+What if i mentioned - 2 CMD in one Dockerfile?
+What if i mentioned - 2 Entrypoint in one Dockerfile?
+What if i mentioned - 1 CMD and 1 Entrypoint in one Dockerfile?
+
+How a container would behave?
+==============================================================
+==============================================================
+What is Docker-Compose?
+=====================
+
+Solution 
+- docker-compose
+	Tool
+		Read One file - docker-compose.yaml
+------------------------------------------------
+docker-compose.yaml
+-----------------------------------------------
+Servcies:
+	Servcie1
+		build - dockerfile
+		image - imagename
+		port
+		env
+		volume	
+		net
+		dependson
+
+	Servcie2
+		build - dockerfile
+		image - imagename
+		port
+		env
+		volume	
+		net
+		dependson
+	Servcie3		
+		build - dockerfile
+		image - imagename
+		port
+		env
+		volume	
+		net
+		dependson
+
+==================================================
+docker-compose up -d
+docker-compose down
+docker-compose stop
+docker-compose start
+docker-compose rm
+docker-compose logs
+docker-compose ps
+
+  697  clear
+  698  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  699  sudo chmod +x /usr/local/bin/docker-compose
+  700  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  701  docker-compose --version
+  702  history
+
+
+version: '2'
+services:
+  wordpress:
+    image: wordpress:latest # https://hub.docker.com/_/wordpress/
+    ports:
+      - 80:80 # change ip if required
+    volumes:
+      - ./wp-app:/var/www/html # Full wordpress project
+      #- ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
+      #- ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name # Theme development
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+    depends_on:
+      - db
+    networks:
+      - wordpress-network
+  db:
+    image: mysql:latest # https://hub.docker.com/_/mysql/ - or mariadb https://hub.docker.com/_/mariadb
+    ports:
+      - 3306:3306 # change ip if required
+    volumes:
+      - ./wp-data:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - wordpress-network
+networks:
+  wordpress-network:
+      driver: bridge
+
+
+
+ 710  docker-compose ps
+  711  docker-compose up -d	[ build + create + start ]
+  712  docker-compose ps
+  713  docker-compose logs
+  714  docker-compose ps
+  715  docker-compose stop
+  716  docker-compose ps
+  717  docker-compose down   [ stop  + remove]
+  718  docker-compose ps
+  719  docker-compose start
+  720  docker-compose up -d
+  721  docker-compose ps
+  722  docker-compose stop
+  723  docker-compose rm
+
+
+
+
+
+
