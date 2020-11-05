@@ -494,7 +494,87 @@ kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajes
   253  kubectl get deploy my-dep -n=rajesh
   254  kubectl get deploy -n=rajesh
 
+Versioning
 
+Rollout
+Rollback
+============================================
+
+
+[centos@ip-172-31-13-255 rajeshk]$ kubectl rollout -h
+Manage the rollout of a resource.
+
+ Valid resource types include:
+
+  *  deployments
+  *  daemonsets
+  *  statefulsets
+
+Examples:
+  # Rollback to the previous deployment
+  kubectl rollout undo deployment/abc
+
+  # Check the rollout status of a daemonset
+  kubectl rollout status daemonset/foo
+
+Available Commands:
+  history     View rollout history
+  pause       Mark the provided resource as paused
+  restart     Restart a resource
+  resume      Resume a paused resource
+  status      Show the status of the rollout
+  undo        Undo a previous rollout
+
+Usage:
+  kubectl rollout SUBCOMMAND [options]
+
+
+
+274  kubectl rollout -h
+  275  kubectl get deploy -n=rajesh
+  276  clear
+  277  kubectl get deploy -n=rajesh
+  278  kubectl rollout history deploy my-dep1 =n=rajesh
+  279  kubectl rollout history deploy my-dep1 -n=rajesh
+  280  kubectl edit deploy my-dep1 -n=rajesh
+  281  kubectl rollout history deploy my-dep1 =n=rajesh
+  282  kubectl rollout history deploy my-dep1 -n=rajesh
+  283  curl http://10.44.0.5
+  284  kubectl get pods -n=rajesh -o wide
+  285  curl http://10.44.0.1
+
+
+
+Rollout To NewVersion
+Rollback To OldVersion
+======================================
+kubectl apply -f dep1.yaml -n=rajesh	# For version1
+kubectl rollout status deploy/my-dep1 -n=rajesh 
+kubectl get deploy -n=rajesh
+kubectl rollout history deploy my-dep1 -n=rajesh
+kubectl get pods -n=rajesh -o wide
+curl http://10.44.0.5
+
+--Rollout strategy
+kubectl describe deploy my-dep1 -n=rajesh
+
+#### EDIT ---kubectl apply -f dep2.yaml -n=rajesh	# For version2
+kubectl rollout status deploy/my-dep1 -n=rajesh 
+kubectl rollout history deploy my-dep1 -n=rajesh
+kubectl get pods -n=rajesh -o wide
+curl http://
+
+kubectl rollout status deploy/my-dep1 -n=rajesh  
+
+##kubectl scale --replicas=10 deploy/my-dep1 -n=rajesh
+
+kubectl rollout status deploy/my-dep1 -n=rajesh  
+
+kubectl rollout history deploy my-dep1 =n=rajesh    
+
+kubectl rollout undo deploy/my-dep1 --to-revision=1 -n=rajesh
+kubectl get pods -n=rajesh -o wide
+curl http://
 
 
 
