@@ -328,12 +328,74 @@ How to use pods?
    86  history
 
 ReplicationController
+==============================================================================
+==============================================================================
+Replication - 1 POD to Multiple
+Controller - Control your number of desire Pods == must match with Actual PODS.
+
+Using Rc, you can get multiple PODS.
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc
+spec:
+  replicas: 2   
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-ctr
+        image: scmgalaxy/nginx-devopsschoolv1
+        ports:
+        - containerPort: 80
 
 
 
-
-
-
+ 138  kubectl create -h
+  139  clear
+  140  ls
+  141  vi rc.yaml
+  142  kubectl get rc -n=rajesh
+  143  kubectl
+  144  kubectl api-resources
+  145  clear
+  146  kubectl get rc -n=rajesh
+  147  ls
+  148  kubectl create -f rc.yaml -n=rajesh
+  149  kubectl get rc -n=rajesh
+  150  kubectl get pods -n=rajesh
+  151  kubectl describe rc hello-rc -n=rajesh
+  152  clear
+  153  kubectl edit rc hello-rc -n=rajesh
+  154  kubectl get rc -n=rajesh
+  155  vi rc.yaml
+  156  kubectl get rc -n=rajesh
+  157  kubectl apply -f rc.yaml -n=rajesh
+  158  kubectl get rc -n=rajesh
+  159  kubectl
+  160  clear
+  161  kubectl scale -h
+  162  clear
+  163  kubectl get rc -n=rajesh
+  164   kubectl scale --replicas=2 rc/hello-rc -n=rajesh
+  165  kubectl get rc -n=rajesh
+  166  kubectl get pods -n=rajesh
+  167  clear
+  168  kubectl get rc -n=rajesh
+  169  kubectl get pods -n=rajesh
+  170  kubectl delete pod hello-rc-d6j9g hello-rc-vnqcf -n=rajesh
+  171  kubectl get pods -n=rajesh
+  172  kubectl get rc -n=rajesh
+  173  kubectl delete rc hello-rc -n=rajesh
+  174  kubectl get pods -n=rajesh
+  175  clear
+  176  kubectl get pods -n=rajesh
+  177  kubectl delete pod hello-pod -n=rajesh
+  178  kubectl get pods
+  179  kubectl delete pods hello-pod test-pod
 
 
 
