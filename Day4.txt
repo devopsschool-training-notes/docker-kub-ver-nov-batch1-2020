@@ -180,15 +180,92 @@ CRUD
    74  kubectl get ns
    75  history
 ===========================
-30 mins
+POD
+=============================================================
+
+CRUD
+	Create
+		CMD
+			create
+		YAML
+			create -f yaml
+	Read
+		CMD
+			get
+			describe
+		YAML
+	Update
+		CMD
+			edit
+		YAML
+			apply -f yaml
+	Delete
+		CMD
+			delete
+		YAML
+			delete -f yaml
 
 
+pod.yaml
+-------------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: hello-ctr
+    image: nginx
+    ports:
+    - containerPort: 80
+
+  43  kubectl create -h
+   44  clear
+   45  ks
+   46  ls
+   47  pwd
+   48  vi pod1.yaml
+   49  kubectl create -f pod1.yaml
+   50  kubectl get pods
+   51  kubectl get ns
+   52* kubectl create ns rajesh -
+   53  clear
+   54  kubectl create -f pod1.yaml
+   55  kubectl create -f pod1.yaml -n=rajesh
+   56  kubectl get pods
+   57  kubectl get pods -n=rajesh
+   58  kubectl get pods --all-namespaces
+   59  clear
+   60  kubectl get pods -o wide -n=rajesh
+   61  kubectl describe pod hello-pod
+   62  clear
+   63  kubectl describe pod hello-pod -n=rajesh
+   64  clear
+   65  kubectl get pods -o wide -n=rajesh
+   66  kubectl edit pod hello-pod -n=rajesh
+   67  kubectl describe pod hello-pod -n=rajesh
+   68  clear
+   69  kubectl get pods -o wide -n=rajesh --show-lables
+   70  kubectl get pods -o wide -n=rajesh --show-labels
+   71  ls
+   72  vi pod1.yaml
+   73  kubectl apply -f pod1.yaml -n=rajesh
+   74  kubectl get pods -o wide -n=rajesh --show-labels
+   75  kubectl get pods
+   76  kubectl delete pod hello-pod
+   77  xlear
+   78  clear
+   79  kubectl delete -f pod1.yaml -n=rajesh
+   80  history
 
 
-
-
-
-
+Image
+===========================
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+=======================
 
 
 
