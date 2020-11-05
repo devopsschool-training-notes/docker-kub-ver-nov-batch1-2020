@@ -266,6 +266,76 @@ Image
 scmgalaxy/nginx-devopsschoolv1
 scmgalaxy/nginx-devopsschoolv2
 =======================
+==============================================================
+How to use pods?
+====================================
+
+  describe      Show details of a specific resource or group of resources
+  logs          Print the logs for a container in a pod
+  attach        Attach to a running container
+  exec          Execute a command in a container
+  port-forward  Forward one or more local ports to a pod
+  cp            Copy files and directories to and from containers.
+  auth          Inspect authorization
+
+
+  96  kubectl get pods -n=rajesh
+   97  kubectl describe pods hello-pod -n=rajesh
+   98  clear
+   99  kubectl get pods -n=rajesh
+  100  kubectl logs hello-pod -n=rajesh
+  101  kubectl get pods -n=rajesh -o wide
+  102  watch kubectl get pods -n=rajesh -o wide
+  103  kubectl logs hello-pod -n=rajesh
+  104  watch kubectl logs hello-pod -n=rajesh
+  105  clear
+  106  watch kubectl get pods -n=rajesh -o wide
+  107   kubectl get pods -n=rajesh -o wide
+  108   kubectl attach hello-pod -n=rajesh
+  109  clear
+  110   kubectl exec hello-pod -n=rajesh ls /tmp
+  111   kubectl exec hello-pod -n=rajesh ls /etc
+  112  clear
+  113   kubectl exec -it hello-pod -n=rajesh /bin/bash
+  114  clear
+  115   kubectl exec -h
+  116  clear
+  117  kubectl port-forward -h
+  118  clear
+  119  kubectl port-forward pod/hello-pod 8888:80 -n=rajesh
+  120  clear
+  121  kubectl cp -h
+  122  clear
+  123  kubectl get pod -n=rajesh
+  124  ls
+  125  kubectl cp pod1.yaml hello-pod:/tmp -n=rajesh
+  126  kubectl exec hello-pod  -n=rajesh ls /tmp
+  127  clear
+  128  kubectl auth -h
+  129  kubectl auth can-i create pod
+  130  kubectl auth can-i -h
+  131  kubectl auth can-i '*' '*'
+  132  clear
+  133  ls
+
+ 79  kubectl get pod -o wide
+   80  kubectl get pod -o wide -n=rajesh
+   81  curl http://10.44.0.7
+   82  watch curl http://10.44.0.7
+   83  clear
+   84  curl http://localhost
+   85  curl http://localhost:8888
+   86  history
+
+ReplicationController
+
+
+
+
+
+
+
+
 
 
 
