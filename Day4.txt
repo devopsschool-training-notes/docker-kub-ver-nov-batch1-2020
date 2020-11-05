@@ -397,7 +397,102 @@ spec:
   178  kubectl get pods
   179  kubectl delete pods hello-pod test-pod
 
+===========================================================================
+===========================================================================
+Deployment
+	-------------------
+	Replication + Controller
+	--------------
+	Replicas Sets
+		 deployment-controller
 
+PODS -> Replicas Sets ->  Deployment
+
+Versioning
+Rollout
+Rollback
+
+
+Image
+===========================
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+=======================
+
+
+kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+
+  182  kubectl create -h
+  183  kubectl create deployment -h
+  184  clear
+  185  kubectl get deploy -n=rajesh
+  186  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+  187  kubectl get deploy -n=rajesh
+  188  kubectl describe deploy my-dep -n=rajesh
+  189  kubectl get rs -n=rajesh
+  190  kubectl describe rs rs -n=rajesh
+  191  kubectl describe rs my-dep-747b4ffb56 -n=rajesh
+  192  clear
+  193  kubectl get pods
+  194  kubectl get pods -n=rajesh
+  195  kubectl describe pod my-dep-747b4ffb56-ttd72 -n=rajesh
+  196  clear
+  197  kubectl get deploy -n=rajesh
+  198  kubectl scale --replicas=4 deploy/my-dep -n=rajesh
+  199  kubectl get deploy -n=rajesh
+  200  kubectl get pods -n=rajesh
+  201  kubectl get deploy -n=rajesh
+  202  kubectl edit deploy my-dep -n=rajesh
+  203  kubectl get deploy -n=rajesh
+  204  clear
+  205  kubectl get pod -n=rajesh
+  206  kubectl delete pod my-dep-747b4ffb56-ttd72 my-dep-747b4ffb56-p54mq -n=rajesh
+  207  kubectl get pod -n=rajesh
+  208  history
+
+  211  kubectl
+  212  clear
+  213  kubectl exaplain pod
+  214  kubectl explain pod
+  215  kubectl explain pod.spec
+  216  kubectl explain pod.spec.containers
+  217  kubectl explain ns
+  218  kubectl explain ns.spec
+  219  kubectl explain deploy
+  220  kubectl explain deploy.spec
+  221  kubectl explain deploy.spec.template
+  222  kubectl explain deploy.spec.template.spec
+  223  kubectl explain rc
+  224  kubectl explain rc.spec
+  225  kubectl explain rc.spec.template
+  226  history
+
+  229  kubectl get deploy -n=rajesh
+  230  kubectl describe deploy my-dep -n=rajesh
+  231  clear
+  232  kubectl get deploy my-dep -n=rajesh
+  233  kubectl get deploy my-dep -n=rajesh -o yaml
+  234  kubectl get deploy my-dep -n=rajesh -o json
+  235  clear
+  236  kubectl get deploy my-dep -n=rajesh -o yaml
+  237  kubectl get deploy my-dep -n=rajesh -o yaml --export
+  238  clear
+  239  kubectl get deploy my-dep -n=rajesh -o yaml
+  240  clear
+  241  kubectl get deploy my-dep -n=rajesh -o yaml >> dep1.yaml
+  242  ls
+  243  more dep1.yaml
+  244  vi dep1.yaml
+  245  ls
+  246  clear
+  247  ls
+  248  kubectl get deploy my-dep -n=rajesh
+  249  ks
+  250  clear
+  251  ls
+  252  kubectl apply -f dep1.yaml -n=rajesh
+  253  kubectl get deploy my-dep -n=rajesh
+  254  kubectl get deploy -n=rajesh
 
 
 
