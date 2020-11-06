@@ -397,5 +397,99 @@ https://www.devopsschool.com/blog/kubernetes-persistentvolume-and-persistentvolu
 Docker - https://www.devopsschool.com/lms/mod/quiz/view.php?id=616
 Kubernetes - https://www.devopsschool.com/lms/mod/quiz/view.php?id=321
 from Raje
+=================================================
+=================================================
+Authentication and Authorization
+================================================
+Authentication - Who should login into k8s?
+----
+- Certficates
+=========================
+How it works!!!
 
-https://docs.google.com/forms/d/e/1FAIpQLSc2cWpjvS9Zf4xlRGXkKuhAMziVjUK0XTMzSRvhFZuaa3xo0A/viewform
+Step 1 - USER would generate Private KEy		[ USER ]
+Step 2 - Private KEy to CSR				[ USER ]
+Step 3 - CSR sent to K8s Admin				[ USER ]
+Step 4 - Certify CSR using CA[Master]output - crt	[ Admin ]
+Step 5 - Add Private KEy and crt in config file		[ USER ]
+
+
+https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+
+Authorization - What you are allowed to do?
+- RBAC
+https://kubernetes.io/docs/reference/access-authn-authz/authorization/
+
+
+
+
+kubectl config set-credentials employee --client-certificate=/home/centos/employee.crt  --client-key=/home/centos/employee.key
+
+kubectl config set-context employee-context --cluster=kubernetes --namespace=office --user=employee
+
+kubectl --context=employee-context get pods
+
+========================================================
+
+Role
+ClusterROle
+
+User		- NOT Presetn
+ServiceAccount
+
+RoleBinding
+ClustorRoleBinding
+
+https://github.com/devopsschool-training-notes/Kubernetes-Tecnotree-Nov-2019/blob/master/SUPERNOTES.TXT
+=========================================
+QA
+=============
+Dashboard
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+
+----------------
+LoadBalancer
+- Network		Service
+- Application		ingress
+---------------------
+ingress
+https://www.devopsschool.com/blog/?s=ingress
+
+20 Services ---> 20 LB + 20 CERT + 20 CONF + 20 Netpolic ==
+===========================================
+20 services --->
+
+
+devopsschool.com/order			order	
+devopsschool.com/account		account
+devopsschool.com/profile		profile
+
+===============================================================
+rajesh@devopsschool.com
+=============================================================
+
+https://www.devopsschool.com/videos/show/cka+certification?type=video
+
+CKA	- K8s Admin and Ops
+CKAD	- K8s Dev
+		Pods - Obserbability + Custom Resources
+
+Docker + Swram = Docker ceritied eng.
+
+https://www.devopsschool.com/kit/master-in-devops-engineering.html
+
+rajesh@devopsschool.com
+www.rajeshkumar.xyz
+
+
+How can containers react to events in their own lifecycle?
+Select one:
+a. Via environment variables
+b. Using Init Containers 
+c. Using PostStart and PreStop hooks
+d. Using Liveness and readiness probes
+Feedback
+Your answer is incorrect.
+The correct answer is: Using PostStart and PreStop hooks
+
