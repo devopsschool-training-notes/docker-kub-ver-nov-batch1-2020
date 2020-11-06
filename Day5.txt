@@ -394,3 +394,7 @@ https://www.devopsschool.com/blog/setup-nfs-server-and-use-inside-a-kubernetes-p
 https://www.devopsschool.com/blog/kubernetes-persistentvolume-and-persistentvolumeclaim-using-nfs-volume-types/
 
 
+Docker - https://www.devopsschool.com/lms/mod/quiz/view.php?id=616
+Kubernetes - https://www.devopsschool.com/lms/mod/quiz/view.php?id=321
+from Raje
+
