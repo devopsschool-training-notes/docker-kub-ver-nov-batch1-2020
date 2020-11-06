@@ -1,0 +1,141 @@
+13.235.74.146
+============================
+[centos@ip-172-31-13-255 rajeshk]$ kubectl create service -h
+Create a service using specified subcommand.
+
+Aliases:
+service, svc
+
+Available Commands:
+  clusterip    Create a ClusterIP service.
+  externalname Create an ExternalName service.
+  loadbalancer Create a LoadBalancer service.
+  nodeport     Create a NodePort service.
+
+Usage:
+  kubectl create service [flags] [options]
+=========================================================
+clusterip = cluster ip == Service would have IP address of Clustor network
+		- This create a service which is accessible inside a cluster.
+		- Get IP address of POD network
+
+
+nodeport == Node Port = Service is accessible at Port of the NODE...
+		- This create a service which is accessible inside a cluster.
+		- Get IP address of POD network
+		- This service get port-forward at EACH NODE of the cluster.
+
+loadbalancer	
+		- This create a service which is accessible inside a cluster.
+		- Get IP address of POD network
+		- This service get port-forward at EACH NODE of the cluster.
+		- Create External loadbalancer at CLOUD platoform
+		- Add Each Node of the cluster to the xternal loadbalancer
+
+
+kubectl create service clusterip my-cs --tcp=5678:80 -n=rajesh
+
+5678 - service port
+80 - container port
+
+
+				
+
+
+Assignment
+-------------------
+[centos@ip-172-31-13-255 ~]$ kubectl get svc
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   43h
+[centos@ip-172-31-13-255 ~]$
+
+		
+962  kubectl create service -h
+  963  kubectl create service clusterip
+  964  kubectl create service clusterip -h
+  965  clear
+  966  kubectl get svc -n=rajesh
+  967  kubectl get svc
+  968  kubectl get svc -n=rajesh
+  969  kubectl create service clusterip my-cs --tcp=5678:80 -n=rajesh
+  970  kubectl get svc -n=rajesh
+  971  curl http://10.109.195.176
+  972  kubectl describe svc my-cs -n=rajesh
+  973  clear
+  974  ls
+  975  cd docker-kub-ver-nov-batch1-2020/
+  976  ls
+  977  cd rajeshk/
+  978  ls
+  979  vi pod1.yaml
+  980  more dep1.yaml | grep -i image
+  981  vi pod1.yaml
+  982  clear
+  983  ls
+  984  kubectl get pods -n=rajesh
+  985  kubectl delete deploy my-dep1 -n=rajesh
+  986  clear
+  987  kubectl get pods -n=rajesh
+  988  clear
+  989  ls
+  990  kubectl create -f pod1.yaml -n=rajesh
+  991  kubectl get pods -n=rajesh
+  992  clear
+  993  kubectl get pods -n=rajesh
+  994  kubectl get pods -n=rajesh --show-lables
+  995  kubectl get pods -n=rajesh --show-labels
+  996  kubectl get svc -n=rajesh --show-labels
+  997  kubectl get pods -n=rajesh --show-labels
+  998  kubectl get svc -n=rajesh --show-labels
+  999  kubectl describe svc my-cs -n=rajesh
+ 1000  kubectl
+ 1001  clear
+ 1002  ls
+ 1003  kubectl get pods -n=rajesh --show-labels
+ 1004  kubectl get svc -n=rajesh --show-labels
+ 1005  kubectl edit pod hello-pod -n=rajesh
+ 1006  kubectl get pods -n=rajesh --show-labels
+ 1007  kubectl get svc -n=rajesh --show-labels
+ 1008  kubectl describe svc my-cs -n=rajesh
+ 1009  kubectl edit pod hello-pod -n=rajesh
+ 1010  kubectl edit svc my-cs -n=rajesh
+ 1011  clear
+ 1012  kubectl edit svc my-cs -n=rajesh
+ 1013  kubectl get pods -n=rajesh --show-labels
+ 1014  kubectl get svc -n=rajesh --show-labels
+ 1015  kubectl describe svc my-cs -n=rajesh
+ 1016  kubectl edit pod hello-pod -n=rajesh
+ 1017  cler
+ 1018  clear
+ 1019  kubectl get svc -n=rajesh --show-labels
+ 1020  kubectl get pods -n=rajesh --show-labels
+ 1021  kubectl describe svc my-cs -n=rajesh
+ 1022  curl http://10.109.195.176:5678
+ 1023  clearf
+ 1024  ls
+ 1025  cleafr
+ 1026  clear
+ 1027  ls
+ 1028  cp pod1.yaml pod2.yaml
+ 1029  vi pod2.yaml
+ 1030  clear
+ 1031  ls
+ 1032  kubectl get pods -n=rajesh --show-labels
+ 1033  vi pod2.yaml
+ 1034  kubectl create -f pod2.yaml -n=rajesh
+ 1035  vi pod2.yaml
+ 1036  kubectl create -f pod2.yaml -n=rajesh
+ 1037  kubectl get pods -n=rajesh --show-labels
+ 1038  kubectl describe svc my-cs -n=rajesh
+ 1039  clear
+ 1040  ls
+ 1041  kubectl get svc my-cs -n=rajesh
+ 1042  curl http://10.109.195.176:5678
+ 1043  watch curl http://10.109.195.176:5678
+ 1044  history
+
+
+
+
+
+
