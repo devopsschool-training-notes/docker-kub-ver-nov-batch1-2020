@@ -134,8 +134,263 @@ kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   43h
  1043  watch curl http://10.109.195.176:5678
  1044  history
 
+=================================
+
+kubectl create service
+
+kubectl create service nodeport my-ns --tcp=5678:80 -n=rajesh
+
+
+ 1049  kubectl create service -h
+ 1050  kubectl create service nodeport -h
+ 1051  clear
+ 1052  kubectl create service nodeport my-ns --tcp=5678:80 -n=rajesh
+ 1053  kubectl get svn -n=rajesh
+ 1054  kubectl get svc -n=rajesh
+ 1055  kubectl describe svc my-ns -n=rajesh
+ 1056  kubectl get pods --show-lables
+ 1057  kubectl get pods --show-labels -n=rajesh
+ 1058  kubectl edit svc my-ns -n=rajesh
+ 1059  clear
+ 1060  kubectl describe svc my-ns -n=rajesh
+ 1061  curl http://10.111.227.201:5678
+ 1062  curl http://13.235.74.146:30159
+ 1063  clear
+ 1064  watch curl http://13.235.74.146:30159
+
+
+===================================================================
+13.235.74.146:30159
+13.233.214.20:30159
+
+kubectl create service nodeport my-ns --tcp=5678:80 -n=rajesh
+
+kubectl create service loadbalancer my-lbs --tcp=5678:80 -n=rajesh
+
+13.235.74.146:31183
+13.233.214.20:31183
+
+
+devops-2026514706.ap-south-1.elb.amazonaws.com
+						13.235.74.146:31183
+						or
+						13.233.214.20:31183
+	
+
+ 
+ver.devopsschool.com
+==========================================================================
+kubectl
+kubectl expose deploy my-dep1 --port=80 --target-port=80 -n=rajesh	# ClusterIP
+kubectl expose deploy my-dep1 --port=80 --target-port=80 --type=NodePort -n=rajesh
+kubectl expose deploy my-dep1 --port=80 --target-port=80 --type=LoadBalancer -n=rajesh
+=======================================================================
+How to store data BEYOND lifecycle, of the PODS?
+-----------------------------------------------
+		PODS are EMPH*
+
+
+Kubernetes 
+	DO NOT UNDERSTAND Storage tech.
+
+- BLOCK Storage = Laptop storage, EBS = ATTACHD TO ONE COMPUTE UNIT, HDD, SSD, Magnetic
+- Object Storage = GIT, s3, Google Drive - Access throgh http.....
+- File Storage AKA Network storage === nfs, efs
+	THEY NEED Driver...
+			Called VOLUME PLUGINS.
+			- Built in
+
+GCEPersistentDisk
+AWSElasticBlockStore
+AzureFile
+AzureDisk
+CSI
+FC (Fibre Channel)
+FlexVolume
+Flocker
+NFS
+iSCSI
+RBD (Ceph Block Device)
+CephFS
+Cinder (OpenStack block storage)
+Glusterfs
+VsphereVolume
+Quobyte Volumes
+HostPath (Single node testing only -- local storage is not supported in any way and WILL NOT WORK in a multi-node cluster)
+Portworx Volumes
+ScaleIO Volumes
+StorageOS
+Persisten
+
+=================================================================================
+How to avail all kind of vol for KUbernetes clustor?
+
+=============================== KUbernetes ===============================
+==========================================================================
+		Admin		| 		User
+
+
+Provisioning 			| Binding  ==>  Using  ==> Reclaim
+
+- Persistent Volumes-Pv		| PVC  	=> pod.spec.volume & pod.spec.containers.volumemounts
+	- Static
+VS
+- Storage Class - sc
+	- Dynamic
+
+======================================================
+POOL of storage
+---------------------------------
+10 - 1 GB 
+10 - 2 GB
+--------------
+	20
+
+2 - 1 GB - ASKING - CLAIMING by USER - (Binding)
+
+
+https://www.devopsschool.com/blog/persistentvolume-persistentvolumeclaim-volumes-using-hostpath/
+
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: hostpath1
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/devopsschool"
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: hostpath2
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/devopsschool"
+
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvchostpath
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvchostpath1
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: task-pv-pod
+spec:
+  containers:
+    - name: task-pv-container
+      image: scmgalaxy/nginx-devopsschoolv1
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: pvchostpath1
 
 
 
+ 996  kubectl api-resources
+  997  clear
+  998  kubectl api-resources | grep vol
+  999  kubectl api-resources | grep sto
+ 1000  clear
+ 1001  kubectl get pv
+ 1002  kubectl get nodes
+ 1003  kubectl get pvc
+ 1004  kubectl get pvc -n=rajesh
+ 1005  clear
+ 1006  ls
+ 1007  cd
+ 1008  cd de
+ 1009  cd docker-kub-ver-nov-batch1-2020/
+ 1010  clear
+ 1011  ls
+ 1012  cd rajeshk/
+ 1013  ls
+ 1014  vi pv1.yaml
+ 1015  vi pv2.yaml
+ 1016  kubectl create -f pv1.yaml
+ 1017  kubectl create -f pv2.yaml
+ 1018  clear
+ 1019  kubectl get pv
+ 1020  vi pvc1.yaml
+ 1021  kubectl create -f pvc1.yaml -n=rajesh
+ 1022  kubectl get pvc -n=rajesh
+ 1023  kubectl get pv
+ 1024  kubectl describe pvc pvchostpath -n=rajesh
+ 1025  clear
+ 1026  kubectl get pv
+ 1027  kubectl get pvc -n=rajesh
+ 1028  vi pvc2.yaml
+ 1029  kubectl create -f pvc2.yaml -n=rajesh
+ 1030  kubectl get pvc -n=rajesh
+ 1031  kubectl get pv
+ 1032  clear
+ 1033  ls
+ 1034  vi podsto.yaml
+ 1035  kubectl create -f podsto.yaml -n=rajesh
+ 1036  kubectl get pods -n=rajesh
+ 1037  kubectl exec task-pv-pod ls //usr/share/nginx/html
+ 1038  kubectl exec task-pv-pod ls /usr/share/nginx/html
+ 1039  kubectl exec task-pv-pod ls /usr/share/nginx/html -n=rajesh
+ 1040  cl;ear
+ 1041  clkear
+ 1042  clear
+ 1043  clkear
+ 1044  kubectl exec task-pv-pod ls /usr/share/nginx/html -n=rajesh
+ 1045  kubectl exec task-pv-pod touch /usr/share/nginx/html/index.html -n=rajesh
+ 1046  kubectl exec task-pv-pod ls /usr/share/nginx/html -n=rajesh
+ 1047  clear
+ 1048  ls
+ 1049  kubectl delete -f podsto.yaml -n=rajesh
+ 1050  kubectl create -f podsto.yaml -n=rajesh
+ 1051  kubectl exec task-pv-pod ls /usr/share/nginx/html -n=rajesh
+ 1052  history
+
+
+
+NFS
+https://www.devopsschool.com/blog/setup-nfs-server-and-use-inside-a-kubernetes-pods-in-rhel-centos7/
+https://www.devopsschool.com/blog/kubernetes-persistentvolume-and-persistentvolumeclaim-using-nfs-volume-types/
 
 
